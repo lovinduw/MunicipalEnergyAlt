@@ -10,7 +10,7 @@ This is an extension of ETHOS.FineRegions with the option to perform a modeling 
 
 2. Create virtual environment with mamba\
    \
-  cd municipalenergyalt
+  cd municipalenergyalt\
   mamba env create -f requirements.yml                
 
 3. Activate virtual environment\
