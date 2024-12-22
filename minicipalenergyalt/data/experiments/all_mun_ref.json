@@ -1,0 +1,92 @@
+{ 
+    "year": 2050,
+    "sim_year": 2014,
+    "TSA": false,
+    "factor_grid_cost": 1,
+    "locations": [],
+    "level": "MUN",
+    "case_wind": "S2_Expansive_existing_TopDown",
+    "case_ofpv": "S3_combination_existing", 
+    "case_pv": "RooftopPV_AllRoofs", 
+    "case_biomass": "biomass_test", 
+    "renovation": {
+        "include": 0, 
+        "fixed reduction": 0
+    },
+    "autarky": {"type": "real", "degree": null},
+
+    "efficiency": {
+        "include": 0, 
+        "fixed reduction": 0
+    },
+    "heat": {
+        "include": 1,
+        "x_district_heating": null,
+        "ORC": 0,
+        "Waste CHP": 0,
+        "NG CHP": 0,
+        "Heat Storage LS": 1,
+        "Heatpump": 1,
+        "Heatpump DH": 1, 
+        "Decentral Heat Storage": 1 
+    },
+    "district heating": {
+        "include": 1, 
+        "cost factor": 1
+    },
+    "electricity": {
+        "include": 1,
+        "autarky": {"type": "real", "degree": null},
+        "import costs": 200000,
+        "Transmission": 0,
+        "share_e_mobility": 0.8,
+        "Wind, existing": 1,
+        "Wind, potential": 1,
+        "PV, existing": 1,
+        "PV, potential": 1,
+        "OFPV, existing": 1,
+        "OFPV, potential": 1,
+        "OFPV Roads, potential": 1,
+        "battery": 1
+    },
+    "waste": {
+        "include": 1,
+        "existing only": 1, 
+        "Waste CHP": 1, 
+        "Waste HOP": 0, 
+        "Waste PP": 0
+    },
+    "biomass": {
+        "include": 1,
+        "limit": 1,
+        "scenario": "Max",
+        "Biomass CHP, existing": 0,
+        "Biomass CHP, potential": 1,
+        "Biomass HOP": 1, 
+        "Biomass PP" : 1
+    },
+    "biogas": {
+        "include": 1, 
+        "limit": 1, 
+        "Biogas CHP": 1
+    },
+    "hydrogen": {
+        "include": 1,
+        "share_h2_mobility": 0.2,
+        "H2 Boiler": 1,
+        "H2 Mini CHP": 1,
+        "Electrolyzer": 1,
+        "Hydrogen Storage Above Ground": 1,
+        "Hydrogen Storage Above Ground cost factor": 1, 
+        "Hydrogen Storage Underground": 0, 
+        "H2 Condensing Boiler": 1, 
+        "Fuel Cell LS": 1,
+        "Fuel Cell SS": 1,
+        "H2 Turbine": 1
+    },
+    "industry": {
+        "include":1,
+        "Process Heat": 1,
+        "Hydrogen Demand": 1
+    }
+}

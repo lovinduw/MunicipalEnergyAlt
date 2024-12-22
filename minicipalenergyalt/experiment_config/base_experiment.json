@@ -1,0 +1,182 @@
+{
+    "BaseExperiment": {
+        "year": 2020,
+        "sim_year": 2014,
+        "TSA": false,
+        "factor_grid_cost": 1,
+        "locations": [
+            "Ilmenau"
+        ],
+        "level": "MUN",
+        "case_wind": "S2_Expansive_existing_TopDown",
+        "case_ofpv": "S3_combination_existing", 
+        "case_pv": "RooftopPV_AllRoofs", 
+        "case_biomass": "kai_potentiale", 
+        "renovation": {
+            "include": 0, 
+            "fixed reduction": 0
+        },
+        "efficiency": {
+            "include": 0, 
+            "fixed reduction": 0
+        },
+        "heat": {
+            "include": 1,
+            "x_district_heating": 0.3,
+            "ORC": {"include": 0, "cost factor": 1},
+            "Waste CHP": {"include": 0, "cost factor": 1},
+            "NG CHP": {"include": 0, "cost factor": 1},
+            "Heat Storage LS": {"include": 1, "cost factor": 1},
+            "Heatpump": {"include": 1, "cost factor": 1},
+            "Heatpump DH": {"include": 1, "cost factor": 1},
+            "Heatpump DH Geothermal": {"include": 1, "cost factor": 1},
+            "Electro Vessel DH": {"include": 1, "cost factor": 1},
+            "Decentral Heat Storage": {"include": 1, "cost factor": 1}
+        },
+        "district heating": {
+            "include": 1,
+            "cost factor": 1
+        },
+        "electricity": {
+            "include": 1,
+            "autarky": {"type": "real", "degree": 1},
+            "import": {"include": 1, "costs": 240},
+            "import costs": 200000,
+            "export": {"include": 1, "costs": 240},
+            "Transmission": 0,
+            "share_e_mobility": 0.8,
+            "Wind, existing": {"include": 1, "cost factor": 1},
+            "Wind, potential": {"include": 1, "cost factor": 1},
+            "PV, existing": {"include": 1, "cost factor": 1},
+            "PV, potential": {"include": 1, "cost factor": 1},
+            "OFPV, existing": {"include": 1, "cost factor": 1},
+            "OFPV, potential": {"include": 1, "cost factor": 1},
+            "OFPV Roads, potential": {"include": 1, "cost factor": 1},
+            "battery": {"include": 1, "cost factor": 1}
+        },
+        "waste": {
+            "include": 0, 
+            "existing only": 1,
+            "Waste CHP": {"include": 1, "cost factor": 1},
+            "Waste HOP": {"include": 1, "cost factor": 1},
+            "Waste PP": {"include": 1, "cost factor": 1}
+        },
+        "biomass": {
+            "include": 1,
+            "cost factor": 1,
+            "limit": 1, 
+            "scenario": "Max",
+            "Biomass CHP, existing": {"include": 0, "cost factor": 1},
+            "Biomass CHP, potential": 1,
+            "Biomass CHP":{"include": 1, "cost factor": 1},
+            "Biomass HOP": {"include": 1, "cost factor": 1},
+            "Biomass PP" : {"include": 1, "cost factor": 1}
+        },
+        "biogas": {
+            "include": 1, 
+            "cost factor": 1,
+            "limit": 1, 
+            "Biogas CHP": {"include": 1, "cost factor": 1}
+        },
+        "hydrogen": {
+            "include": 1,
+            "share_h2_mobility": 0.2,
+            "import": {"include": 0,"costs": 126.6127},
+            "H2 Boiler": {"include": 1, "cost factor": 1},
+            "H2 Mini CHP": {"include": 1, "cost factor": 1},
+            "Electrolyzer": {"include": 1, "cost factor": 1},
+            "Hydrogen Storage Above Ground": {"include": 1, "cost factor": 1},
+            "Hydrogen Storage Above Ground cost factor": 1, 
+            "Hydrogen Storage Underground": {"include": 0, "cost factor": 1},
+            "H2 Condensing Boiler": {"include": 1, "cost factor": 1},
+            "Fuel Cell LS": {"include": 1, "cost factor": 1},
+            "Fuel Cell SS": {"include": 1, "cost factor": 1},
+            "H2 Turbine": {"include": 1, "cost factor": 1}
+        },
+        "industry": {
+            "include": 1,
+            "Process Heat": 1,
+            "Hydrogen Demand": 1
+        },
+        "municipal_aggregation": {
+            "include":1,
+            "shapefile_name": "",
+            "cells_number": 0,
+            "scenario": "",
+            "load_aggregation": null,
+            "grid":{
+                "real": {
+                    "active": false,
+                    "transmission_capacity": 200,
+                    "allow_DC_expansion": false,
+                    "fixed_cap_transmission": true,
+                    "connect_all_lower_grid": false,
+                    "h2_grid": true,
+                    "imports_exports": true
+                },
+                "centroids": {
+                    "active": true,
+                    "transmission_capacity": {"percentage": 100, "targeted_imports": true},
+                    "costs": true,
+                    "h2_grid": true
+                }
+            },
+            "central_components": {
+                "Offshore": {
+                    "active": 1,
+                    "case": "Offshore_S1_Expansive_existing"
+                }
+            },
+            "elbow_method": {
+              "plot": true,
+              "type": {"CalinskiH": 0, "Silhouette": 0 },
+              "use_optimal_k": true
+            },
+            "aggregation_type": {
+                "plot": {
+                    "pair_plot": true, "dendrogram": true, "save_connectivity_matrix": false
+                },
+                "parameters": {
+                    "centroids": {
+                        "active": true, "weight": 50
+                    },
+                    "wind_pot": {
+                        "active": true, "weight": 25 , "time_series":true
+                    },
+                    "PV_pot": {
+                        "active": true, "weight_pv": 25, "weight_ofpv": 25, "time_series":true
+                    },
+                    "demand_density": {
+                        "active": true, "weight": 25, "separate_params": false
+                    },
+                    "population_density": {
+                        "active": false, "weight": 0
+                    },
+                    "el_grid_buses": {
+                        "active": false, "weight": 0
+                    }
+                }
+            },
+            "steps_selection": {
+                "get_data": {
+                    "save": 0, "load": 0
+                },
+                "mun_agg": {
+                    "save": 0, "load": 0, "exit": 0
+                },
+                "create_esM": {
+                    "save": 0, "load": 0
+                },
+                "spagat": {
+                    "include": 0, "save": 0, "load": 0
+                },
+                "grid": {
+                    "save": 0, "load": 0
+                },
+                "optimize": {
+                    "save": 0, "load": 0
+                }
+            }
+        }
+    }
+}
