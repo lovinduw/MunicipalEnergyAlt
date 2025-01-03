@@ -616,12 +616,13 @@ def add_electricity_sale(esM, el_price, autarky=None, peak_grid=None, locational
                         commodity='electricity', hasCapacityVariable=True,
                         capacityMax=peak_grid,
                         commodityRevenueTimeSeries=el_price-1e-8))  # Really big el. price --> Driver to maximize autarky
+
         else:
             esM.add(fn.Sink(esM=esM, name='Electricity sale',
                 locationalEligibility=locationalEligibility,
                 commodity='electricity', hasCapacityVariable=True,
                 capacityMax=peak_grid,
-                commodityRevenue=el_price-1e-8))  # Really big el. price --> Driver to maximize autarky
+                commodityRevenue=el_price-1e-8))  # Really big el. price --> Driver to maximize autarky     
 
     else:
         if el_price is None:
@@ -630,6 +631,7 @@ def add_electricity_sale(esM, el_price, autarky=None, peak_grid=None, locational
                               commodity='electricity', hasCapacityVariable=True,
                               capacityMax=peak_grid,
                               balanceLimitID="el"))  # No el. price --> Autarky is driver
+
         else:
             if isinstance(el_price, pd.DataFrame):
                 esM.add(fn.Sink(esM=esM, name='Electricity sale',
@@ -638,6 +640,7 @@ def add_electricity_sale(esM, el_price, autarky=None, peak_grid=None, locational
                     capacityMax=peak_grid,
                     commodityRevenueTimeSeries=el_price-1e-9,
                     balanceLimitID="el"))
+
             else:
                 esM.add(fn.Sink(esM=esM, name='Electricity sale',
                                     locationalEligibility=locationalEligibility,
@@ -707,6 +710,7 @@ def add_transmission_components(esM, locations, data=None, AC=False, DC=False, l
                     "investPerCapacity": data["DC cables (expansion), investPerCapacity"],
                 }
                 esM.add(fn.Transmission(**args))
+
         if lower_grid:
             args = {
                 'esM': esM, 'hasCapacityVariable': True, 'commodity': "electricity", 'name': "Electricity Grid",
@@ -891,6 +895,7 @@ def add_processHeat_demand(esM, data, efficiency_red, locationalEligibility=None
                     hasCapacityVariable=False,
                     operationRateFix=data['Process Heat demand low temperature, operationRateFix']*(1-efficiency_red)
                     ))
+
     # Medium Temperature Process Heat
     esM.add(fn.Sink(esM=esM, 
                     name='Process Heat Demand Medium Temperature',
@@ -899,6 +904,7 @@ def add_processHeat_demand(esM, data, efficiency_red, locationalEligibility=None
                     hasCapacityVariable=False,
                     operationRateFix=data['Process Heat demand medium temperature, operationRateFix']*(1-efficiency_red)
                     ))
+
     # # High Temperature Process Heat (Non Electrifiable), Cement
     esM.add(fn.Sink(esM=esM, 
                     name='Process Heat Demand High Temperature Combustion',
@@ -907,6 +913,7 @@ def add_processHeat_demand(esM, data, efficiency_red, locationalEligibility=None
                     hasCapacityVariable=False,
                     operationRateFix=data['Process Heat demand high temperature Cement, operationRateFix']*(1-efficiency_red)
                     ))
+
     # # High Temperature Process Heat (Non Electrifiable), and no biocoal EAF
     esM.add(fn.Sink(esM=esM, 
                     name='Process Heat Demand High Temperature EAF',
@@ -915,6 +922,7 @@ def add_processHeat_demand(esM, data, efficiency_red, locationalEligibility=None
                     hasCapacityVariable=False,
                     operationRateFix=data['Process Heat demand high temperature EAF, operationRateFix']*(1-efficiency_red)
                     ))
+
     # # High Temperature Process Heat, 
     esM.add(fn.Sink(esM=esM, 
                     name='Process Heat Demand High Temperature',
@@ -923,6 +931,7 @@ def add_processHeat_demand(esM, data, efficiency_red, locationalEligibility=None
                     hasCapacityVariable=False,
                     operationRateFix=data['Process Heat demand high temperature, operationRateFix']*(1-efficiency_red)
                     ))
+
     esM.add(fn.Conversion(esM=esM,
                 name="Combustion to PHHT", 
                 locationalEligibility=locationalEligibility,

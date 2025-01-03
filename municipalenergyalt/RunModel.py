@@ -2,6 +2,7 @@ import time
 import GetExperiment
 import GetData
 import CreateModel
+import energysysalt
 
 db_path="Other" # This should be "CAESAR" when run with the FZJ ICE-2 Cluster else "Other"
 switch_industry = 1
@@ -96,9 +97,9 @@ except Exception as e:
 
 # Running MGA optimization
 
-esM.mga_optimize(timeSeriesAggregation=bool(experiments[experiment_name]["TSA"]), solver='gurobi',
+energysysalt.optimize.mgaOptimize(esM,timeSeriesAggregation=bool(experiments[experiment_name]["TSA"]), solver='gurobi',
             optimizationSpecs='OptimalityTol=1e-6 method=2 cuts=0 crossover=0',
             # optimizationSpecs="OptimalityTol=1e-3 method=2 cuts=0 MIPGap=5e-3",
             declaresOptimizationProblem=True, warmstart=False, threads=0,
-            slack=0.1, iterations = 4, random_seed = False,
+            slack=0.1, iterations = 2, random_seed = False,
             operationRateinOutput = False, writeSolutionsasExcels = True)

@@ -7,6 +7,7 @@ channels:
 dependencies:
   - python>=3.10,<3.13
   - pip
+  - fine==2.3.4
   - geopandas<=0.14.4
   - geokit
   - glpk
