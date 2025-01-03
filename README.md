@@ -4,18 +4,19 @@ This is an extension of ETHOS.FineRegions with the option to perform a modeling 
 
 # Steps to follow to install fine with MGA optimization as a library
 
-1. Create virtual environment with mamba\
+1. Clone the repository\
    \
-  mamba create -n municipalenergyalt python=3.10                
+   git clone https://github.com/lovinduw/MunicipalEnergyAlt
 
-2. Activate virtual environment\
+2. Create virtual environment with mamba\
+   \
+  cd municipalenergyalt
+  mamba env create -f requirements.yml                
+
+3. Activate virtual environment\
    \
   mamba activate municipalenergyalt
 
-3. Install fine library from GitHub with all the dependencies\
+4. Install fine library from GitHub with all the dependencies\
    \
   pip install git+https://github.com/lovinduw/EnergySysAlternatives#egg=fine
-
-4. Install the municipalenergyalt library from GitHub with all the dependencies\
-   \
-  pip install git+https://github.com/lovinduw/MunicipalEnergyAlt#egg=municipalenergyalt
