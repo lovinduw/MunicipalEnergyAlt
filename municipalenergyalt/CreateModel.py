@@ -23,7 +23,6 @@ def create_model(data, dict, experiment_name, db_path,dataOffshore=None,
     fine.EnergySystemModel
         esm instance for regarded scenario
     """
-
     def _interpolate(year, val1, val2, year1, year2):
         return round(val1 + (val2-val1) * (year - year1) / (year2 - year1), 4)
     def get_cost_data(sheet, technology, cost_factor, year=2020):

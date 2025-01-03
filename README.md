@@ -10,13 +10,13 @@ This is an extension of ETHOS.FineRegions with the option to perform a modeling 
 
 2. Create virtual environment with mamba\
    \
-  cd municipalenergyalt
+  cd municipalenergyalt\
   mamba env create -f requirements.yml                
 
 3. Activate virtual environment\
    \
   mamba activate municipalenergyalt
 
-4. Install fine library from GitHub with all the dependencies\
+4. Install EnergySysAlt library from GitHub with all the dependencies to perform modeling to perform alternatives (MGA) optimization\
    \
-  pip install git+https://github.com/lovinduw/EnergySysAlternatives#egg=fine
+  pip install git+https://github.com/lovinduw/EnergySysAlt
