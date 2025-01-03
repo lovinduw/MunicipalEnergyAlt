@@ -17,6 +17,6 @@ This is an extension of ETHOS.FineRegions with the option to perform a modeling 
    \
   mamba activate municipalenergyalt
 
-4. Install EnergySysAlt library from GitHub with all the dependencies to perform modeling to generate alternatives (MGA) optimization\
+4. Install EnergySysAlt library from GitHub with all the dependencies to perform modeling to perform alternatives (MGA) optimization\
    \
   pip install git+https://github.com/lovinduw/EnergySysAlt
