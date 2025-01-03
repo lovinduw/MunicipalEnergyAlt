@@ -19,4 +19,4 @@ This is an extension of ETHOS.FineRegions with the option to perform a modeling 
 
 4. Install fine library from GitHub with all the dependencies\
    \
-  pip install git+https://github.com/lovinduw/EnergySysAlternatives#egg=fine
+  pip install git+https://github.com/lovinduw/EnergySysAlt
